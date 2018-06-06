@@ -41,19 +41,31 @@
 
 
 <script type="text/javascript">
-	function addTextToPage(event){
-		var key = event.key;
+	function addTextToPage(x){
+		var key = x.key;
 
-		var letters = document.querySelector('#letters');
+		var letters = document.querySelector('#hiddenWord');
 
-		letters.innerText = letters.innerText + key;
+		hiddenWord.innerText = hiddenWord.innerText + key;
 	}
 
 	document.onkeyup = addTextToPage;
 
 </script>
 
-<div id="letters"></div>
+<!-- Body text begins -->
+<div class="container">
+    <h2>Word Guess Game</h2>
+        <h3>Press any key to begin</h3>
+            <p>Mystery Word:</p>
+            <p id="hiddenWord"></p>
+            <p>Wins:</p>
+            <p id="wins"></p>
+            <p>Losses:</p>
+            <p id="losses"></p>
+            <p id="winOrLose"></p>
+</div>
+
 
 </body>
 </html>

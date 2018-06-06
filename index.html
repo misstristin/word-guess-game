@@ -9,7 +9,51 @@
 </head>
 <body>
  
-    
-    
+    <!-- 
+    1. Game begins when you press a button.
+        a. Some text already exists on page, such as _ in place of letters in word to be guessed,
+            the words 'letters guessed' and '10 chances' plus any decorations.
+    2. When you press a button, it adds a letter to the screen.
+        a. if you are correct, the letter appears within the word, replacing _
+        b. if you are incorrect, the letter appears on your list of used letters, and removes 1 chance
+    3. Every time you press a button and it is not in the word, you lose a chance.
+    4. Chances are not used if you guess a letter correctly.
+    5. If you guess the word by getting all the letters before running out of chances, then you win! Music plays.
+    6. If you do not guess the word before your chances reach 0, then you lose. Sadface. 
+    -->
+   
+<!-- PSEUDOCODE
+
+1. Existing text on page before any user actions are taken, including decorations and 1a above.
+    i. Regular HTML and css
+2. Assign a random word in a list of words specific to game theme.
+    i. Use javascript, random function?
+3. Letter is pressed; check to see if letter is in word.
+    i. Javascript if/else
+4. If letter is in word, then add letter to the word, replacing _ in the right position.
+    i. Javascript if/else, document. see 10-event-demo.html
+5. If a letter is pressed once, and is not in the word, then pushing the letter again does not remove a point.
+6. If letter is NOT in word, then add letter to 'letters used' section on page and remove 1 from chances.
+7. When chances = 0, the game ends and you lose.
+8. If the word is completed before chances = 0, then you win! Music plays and the game restarts, 
+    adding a new word to the page, bringing chances back to 10, and removing all previous letters used.
+9. On winning, text and photos change to reflect your win. -->
+
+
+<script type="text/javascript">
+	function addTextToPage(event){
+		var key = event.key;
+
+		var letters = document.querySelector('#letters');
+
+		letters.innerText = letters.innerText + key;
+	}
+
+	document.onkeyup = addTextToPage;
+
+</script>
+
+<div id="letters"></div>
+
 </body>
 </html>

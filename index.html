@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Word Guess Game</title>
+    <title>Harry Potter Word Guess Game</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-	<div id="container">
+    <img width="500px" src="assets/images/2180px-Harry_Potter_wordmark.svg.png" alt="title">
+	<div class="container">
 		<h2>Word Guess Game</h2>
         <h3>Guess the word:</h3>
         <p id="word"></p>
@@ -12,14 +15,15 @@
 		<p>Losses: <span id="losses"></span></p>
 		<p>Guesses left: <span id="guessesLeft"></span></p>
 		<p>Letters guessed so far?</p> 
-		<span id="lettersGuessed"></span>
+        <span id="lettersGuessed"></span>
+        <br>
 	</div>
 
 <script type="text/javascript">
 	
     // words, letters, answer arrays
 
-    var words = ['ron', 'harry', 'hermione'];
+    var words = ['ron', 'harry', 'hermione', 'lumos', 'polyjuice', 'voldemort', 'hogsmeade', 'hogwarts', 'buckbeak', 'hagrid', 'gryffindor', 'slytherin', 'ravenclaw', 'hufflepuff', 'quidditch', 'firebolt', 'dumbledore', 'butterbeer'];
     var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
     var answerArray = [];
     var lettersGuessed = [];
@@ -48,16 +52,22 @@
     var str;
     for (var i = 0; i < randWord.length; i++) {
     answerArray[i] = "_";
-    
     }
     document.querySelector('#word').innerText = answerArray;
 
     // begin game using user input
 
+        // guess a letter
+
 	function wordGame(event){
 	var userLet = event.key;
 	lettersGuessed.push(userLet);
 	document.querySelector('#lettersGuessed').innerText = lettersGuessed;
+
+
+
+
+        // end game due to guesses used up
 
 	if(guessesLeft == 0){
 	losses = losses + 1;

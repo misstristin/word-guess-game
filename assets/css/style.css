@@ -1,0 +1,16 @@
+body {
+    text-align: center;
+    background-color: skyblue;
+    background: url('../images/pexels-photo-462770.jpeg');
+    padding-top: 50px;
+}
+.container {
+    width: 50%;
+    opacity: 0.9;
+    margin: 1% auto;
+    background-color: white;
+    line-height: 40px;
+    font-weight: bold;
+}
+
+

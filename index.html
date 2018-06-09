@@ -60,20 +60,17 @@
 
 	function wordGame(event){
 	var userLet = event.key;
-	lettersGuessed.push(userLet);
-	document.querySelector('#lettersGuessed').innerText = lettersGuessed;
-
-        // if a letter has already been guessed, do not remove 1 from guesses and do not add to list of words guessed
-
+	var guessedAlready = lettersGuessed.indexOf(userLet);
+    if (guessedAlready == -1){
+        guessesLeft = guessesLeft - 1;
+        lettersGuessed.push(userLet);
+	    document.querySelector('#lettersGuessed').innerText = lettersGuessed.join(" ");
+        document.querySelector('#guessesLeft').innerText = guessesLeft;
+    } 
+     
         // if the event.key (user input) is an element in the array randWord (use indexOf), then change that element in answerArray to the guessed letter.
 
-        // if the event.key (user input) is not an element in the array randWord (use indexOf), then remove 1 guess
-
-        // if all the letters are guessed, add 1 to wins
-
-        // if guesses = 0, add 1 to lose
-
-        // end game due to guesses used up
+        // if all the letters are guessed, add 1 to wins, reset game
 
 	if(guessesLeft == 0){
 	losses = losses + 1;

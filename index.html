@@ -1,71 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Word Guess Game</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="../word-guess-game/assets/css/reset.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="../word-guess-game/assets/css/style.css">
-    <script src="../word-guess-game/assets/javascript/game.js"></script>
+	<title>Psychic Game</title>
 </head>
 <body>
- 
-    <!-- 
-    1. Game begins when you press a button.
-        a. Some text already exists on page, such as _ in place of letters in word to be guessed,
-            the words 'letters guessed' and '10 chances' plus any decorations.
-    2. When you press a button, it adds a letter to the screen.
-        a. if you are correct, the letter appears within the word, replacing _
-        b. if you are incorrect, the letter appears on your list of used letters, and removes 1 chance
-    3. Every time you press a button and it is not in the word, you lose a chance.
-    4. Chances are not used if you guess a letter correctly.
-    5. If you guess the word by getting all the letters before running out of chances, then you win! Music plays.
-    6. If you do not guess the word before your chances reach 0, then you lose. Sadface. 
-    -->
-   
-<!-- PSEUDOCODE
-
-1. Existing text on page before any user actions are taken, including decorations and 1a above.
-    i. Regular HTML and css
-2. Assign a random word in a list of words specific to game theme.
-    i. Use javascript, random function?
-3. Letter is pressed; check to see if letter is in word.
-    i. Javascript if/else
-4. If letter is in word, then add letter to the word, replacing _ in the right position.
-    i. Javascript if/else, document. see 10-event-demo.html
-5. If a letter is pressed once, and is not in the word, then pushing the letter again does not remove a point.
-6. If letter is NOT in word, then add letter to 'letters used' section on page and remove 1 from chances.
-7. When chances = 0, the game ends and you lose.
-8. If the word is completed before chances = 0, then you win! Music plays and the game restarts, 
-    adding a new word to the page, bringing chances back to 10, and removing all previous letters used.
-9. On winning, text and photos change to reflect your win. -->
-
+	<div id="container">
+		<h2>Psychic Game</h2>
+		<h3>Guess which letter am I thinking of.</h3>
+		<p>Wins: <span id="wins"></span></p>
+		<p>Losses: <span id="losses"></span></p>
+		<p>Guesses left: <span id="guessesLeft"></span></p>
+		<p>Letters guessed so far?</p> 
+		<span id="lettersGuessed"></span>
+	</div>
 
 <script type="text/javascript">
-	function addTextToPage(x){
-		var key = x.key;
+	var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
-		var letters = document.querySelector('#hiddenWord');
+	var guessesLeft = 9;
+	var wins = 0;
+	var losses = 0;
+	var lettersGuessed = [];
 
-		hiddenWord.innerText = hiddenWord.innerText + key;
+	document.querySelector('#guessesLeft').innerText = guessesLeft;
+	document.querySelector('#wins').innerText = wins;
+	document.querySelector('#losses').innerText = losses;
+	document.querySelector('#lettersGuessed').innerText = lettersGuessed;
+
+	var randLet = Math.floor(Math.random()*letters.length);
+	randLet = letters[randLet];
+
+	function psychicGame(event){
+	var userLet = event.key;
+	lettersGuessed.push(userLet);
+	document.querySelector('#lettersGuessed').innerText = lettersGuessed;
+
+	if (randLet == userLet){
+	wins = wins + 1;
+	guessesLeft = 9;
+	lastGuess = lettersGuessed.length;
+	lettersGuessed.splice(0,lastGuess);
+	document.querySelector('#guessesLeft').innerText = guessesLeft;
+	document.querySelector('#wins').innerText = wins;
+	document.querySelector('#lettersGuessed').innerText = lettersGuessed;
+	randLet = Math.floor(Math.random()*letters.length);
+	randLet = letters[randLet];
+	} else {
+	guessesLeft = guessesLeft - 1;
+	document.querySelector('#guessesLeft').innerText = guessesLeft;
+	}
+	
+	if(guessesLeft == 0){
+	losses = losses + 1;
+	guessesLeft = 9;
+	lastGuess = lettersGuessed.length;
+	lettersGuessed.splice(0,lastGuess);
+	document.querySelector('#guessesLeft').innerText = guessesLeft;
+	document.querySelector('#losses').innerText = losses;
+	document.querySelector('#lettersGuessed').innerText = lettersGuessed;
+	randLet = Math.floor(Math.random()*letters.length);
+	randLet = letters[randLet];
+	}	
 	}
 
-	document.onkeyup = addTextToPage;
+document.onkeyup = psychicGame;
 
 </script>
-
-<!-- Body text begins -->
-<div class="container">
-    <h2>Word Guess Game</h2>
-        <h3>Press any key to begin</h3>
-            <p>Mystery Word:</p>
-            <p id="hiddenWord"></p>
-            <p>Wins:</p>
-            <p id="wins"></p>
-            <p>Losses:</p>
-            <p id="losses"></p>
-            <p id="winOrLose"></p>
-</div>
-
-
 </body>
 </html>

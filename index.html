@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Psychic Game</title>
+	<title>Word Guess Game</title>
 </head>
 <body>
 	<div id="container">
-		<h2>Psychic Game</h2>
-		<h3>Guess which letter am I thinking of.</h3>
+		<h2>Word Guess Game</h2>
+        <h3>Guess the word:</h3>
+        <p id="word"></p>
 		<p>Wins: <span id="wins"></span></p>
 		<p>Losses: <span id="losses"></span></p>
 		<p>Guesses left: <span id="guessesLeft"></span></p>
@@ -15,55 +16,63 @@
 	</div>
 
 <script type="text/javascript">
-	var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+	
+    // words, letters, answer arrays
 
-	var guessesLeft = 9;
+    var words = ['ron', 'harry', 'hermione'];
+    var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    var answerArray = [];
+    var lettersGuessed = [];
+
+    // beginning values of variables
+
+	var guessesLeft = 15;
 	var wins = 0;
 	var losses = 0;
-	var lettersGuessed = [];
+
+    // text and numbers in divs on pageload
 
 	document.querySelector('#guessesLeft').innerText = guessesLeft;
 	document.querySelector('#wins').innerText = wins;
 	document.querySelector('#losses').innerText = losses;
 	document.querySelector('#lettersGuessed').innerText = lettersGuessed;
+    
+    // pick a random word from array
 
-	var randLet = Math.floor(Math.random()*letters.length);
-	randLet = letters[randLet];
+    var randWord = Math.floor(Math.random()*words.length);
+	var randWord = words[randWord];
 
-	function psychicGame(event){
+    // add _ for each letter in random word / answer
+
+    var answerArray = [];
+    var str;
+    for (var i = 0; i < randWord.length; i++) {
+    answerArray[i] = "_";
+    
+    }
+    document.querySelector('#word').innerText = answerArray;
+
+    // begin game using user input
+
+	function wordGame(event){
 	var userLet = event.key;
 	lettersGuessed.push(userLet);
 	document.querySelector('#lettersGuessed').innerText = lettersGuessed;
 
-	if (randLet == userLet){
-	wins = wins + 1;
-	guessesLeft = 9;
-	lastGuess = lettersGuessed.length;
-	lettersGuessed.splice(0,lastGuess);
-	document.querySelector('#guessesLeft').innerText = guessesLeft;
-	document.querySelector('#wins').innerText = wins;
-	document.querySelector('#lettersGuessed').innerText = lettersGuessed;
-	randLet = Math.floor(Math.random()*letters.length);
-	randLet = letters[randLet];
-	} else {
-	guessesLeft = guessesLeft - 1;
-	document.querySelector('#guessesLeft').innerText = guessesLeft;
-	}
-	
 	if(guessesLeft == 0){
 	losses = losses + 1;
-	guessesLeft = 9;
+	guessesLeft = 15;
 	lastGuess = lettersGuessed.length;
 	lettersGuessed.splice(0,lastGuess);
 	document.querySelector('#guessesLeft').innerText = guessesLeft;
 	document.querySelector('#losses').innerText = losses;
 	document.querySelector('#lettersGuessed').innerText = lettersGuessed;
-	randLet = Math.floor(Math.random()*letters.length);
-	randLet = letters[randLet];
+	randWord = Math.floor(Math.random()*words.length);
+	randWord = words[randWord];
 	}	
 	}
 
-document.onkeyup = psychicGame;
+document.onkeyup = wordGame;
 
 </script>
 </body>

@@ -49,11 +49,10 @@
     // add _ for each letter in random word / answer
 
     var answerArray = [];
-    var str;
     for (var i = 0; i < randWord.length; i++) {
     answerArray[i] = "_";
     }
-    document.querySelector('#word').innerText = answerArray;
+    document.querySelector('#word').innerText = answerArray.join(" ");
 
     // begin game using user input
 
@@ -64,8 +63,15 @@
 	lettersGuessed.push(userLet);
 	document.querySelector('#lettersGuessed').innerText = lettersGuessed;
 
+        // if a letter has already been guessed, do not remove 1 from guesses and do not add to list of words guessed
 
+        // if the event.key (user input) is an element in the array randWord (use indexOf), then change that element in answerArray to the guessed letter.
 
+        // if the event.key (user input) is not an element in the array randWord (use indexOf), then remove 1 guess
+
+        // if all the letters are guessed, add 1 to wins
+
+        // if guesses = 0, add 1 to lose
 
         // end game due to guesses used up
 

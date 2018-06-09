@@ -30,7 +30,7 @@
 
     // beginning values of variables
 
-	var guessesLeft = 15;
+	var guessesLeft = 10;
 	var wins = 0;
 	var losses = 0;
 
@@ -46,7 +46,7 @@
     var randWord = Math.floor(Math.random()*words.length);
 	var randWord = words[randWord];
 
-    // add _ for each letter in random word / answer
+    // add _ for each letter in random word (answer)
 
     var answerArray = [];
     for (var i = 0; i < randWord.length; i++) {
@@ -54,39 +54,54 @@
     }
     document.querySelector('#word').innerText = answerArray.join(" ");
 
+    var remainingLetters = randWord.length;
     // begin game using user input
 
         // guess a letter
-
+    
 	function wordGame(event){
 	var userLet = event.key;
+    var withinWord = randWord.indexOf(userLet);
 	var guessedAlready = lettersGuessed.indexOf(userLet);
-    if (guessedAlready == -1){
+    if (guessedAlready == -1 && withinWord == -1){
         guessesLeft = guessesLeft - 1;
         lettersGuessed.push(userLet);
 	    document.querySelector('#lettersGuessed').innerText = lettersGuessed.join(" ");
         document.querySelector('#guessesLeft').innerText = guessesLeft;
     } 
-     
+
         // if the event.key (user input) is an element in the array randWord (use indexOf), then change that element in answerArray to the guessed letter.
+
+    for (var j = 0; j < randWord.length; j++) {
+    if (randWord[j] == userLet) {
+    answerArray[j] = randWord[j];
+    document.querySelector('#word').innerText = answerArray.join(" ");
+    }
+    }
 
         // if all the letters are guessed, add 1 to wins, reset game
 
+        // if all guesses are used, reset game
+
 	if(guessesLeft == 0){
 	losses = losses + 1;
-	guessesLeft = 15;
+	guessesLeft = 10;
 	lastGuess = lettersGuessed.length;
-	lettersGuessed.splice(0,lastGuess);
+    lettersGuessed.splice(0,lastGuess);
 	document.querySelector('#guessesLeft').innerText = guessesLeft;
 	document.querySelector('#losses').innerText = losses;
 	document.querySelector('#lettersGuessed').innerText = lettersGuessed;
 	randWord = Math.floor(Math.random()*words.length);
 	randWord = words[randWord];
 	}	
-	}
+    }
 
 document.onkeyup = wordGame;
+
+
 
 </script>
 </body>
 </html>
+
+

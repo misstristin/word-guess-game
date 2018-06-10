@@ -24,7 +24,6 @@
     // words, letters, answer arrays
 
     var words = ['ron', 'harry', 'hermione', 'lumos', 'polyjuice', 'voldemort', 'hogsmeade', 'hogwarts', 'buckbeak', 'hagrid', 'gryffindor', 'slytherin', 'ravenclaw', 'hufflepuff', 'quidditch', 'firebolt', 'dumbledore', 'butterbeer'];
-    var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
     var answerArray = [];
     var lettersGuessed = [];
 
@@ -50,12 +49,11 @@
 
     var answerArray = [];
     for (var i = 0; i < randWord.length; i++) {
-    answerArray[i] = "_";
+        answerArray[i] = "_";
     }
     document.querySelector('#word').innerText = answerArray.join(" ");
 
-    var remainingLetters = randWord.length;
-    // begin game using user input
+    // begin game conditions using user input
 
         // guess a letter
     
@@ -70,7 +68,7 @@
         document.querySelector('#guessesLeft').innerText = guessesLeft;
     } 
 
-        // if the event.key (user input) is an element in the array randWord (use indexOf), then change that element in answerArray to the guessed letter.
+        // if the user guesses a correct letter, change the corresponding _ to the letter
 
     for (var j = 0; j < randWord.length; j++) {
     if (randWord[j] == userLet) {
@@ -81,7 +79,9 @@
 
         // if all the letters are guessed, add 1 to wins, reset game
 
-        // if all guesses are used, reset game
+    
+
+        // if all guesses are used, add 1 to losses, reset game
 
 	if(guessesLeft == 0){
 	losses = losses + 1;
@@ -101,6 +101,10 @@
     document.querySelector('#word').innerText = answerArray.join(" ");
 	}	
     }
+
+    // end game conditions using user input
+
+// begin game on first key pressed
 
 document.onkeyup = wordGame;
 

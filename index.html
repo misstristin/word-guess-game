@@ -88,35 +88,33 @@
         document.querySelector('#guessesLeft').innerText = guessesLeft;
         document.querySelector('#wins').innerText = wins;
         document.querySelector('#lettersGuessed').innerText = lettersGuessed;
-        // randWord = Math.floor(Math.random()*words.length);
-	    // randWord = words[randWord];
-        // for (var i = 0; i < randWord.length; i++) {
-        // answerArray[i] = "_";
-        // }
-        // document.querySelector('#word').innerText = answerArray.join(" ");
-	    // }
+        randWord = Math.floor(Math.random()*words.length);
+	    randWord = words[randWord];
+        for (var i = 0; i < randWord.length; i++) {
+        answerArray[i] = "_";
         }
-
+        document.querySelector('#word').innerText = answerArray.join(" ");
+        }
 
         // if all guesses are used, add 1 to losses, reset game
 
 	if(guessesLeft == 0){
-	losses = losses + 1;
-	guessesLeft = 8;
-	lastGuess = lettersGuessed.length;
-    lettersGuessed.splice(0,lastGuess);
-    lastLetter = answerArray.length;
-    answerArray.splice(0,lastLetter);
-	document.querySelector('#guessesLeft').innerText = guessesLeft;
-	document.querySelector('#losses').innerText = losses;
-	document.querySelector('#lettersGuessed').innerText = lettersGuessed;
-	randWord = Math.floor(Math.random()*words.length);
-	randWord = words[randWord];
-    for (var i = 0; i < randWord.length; i++) {
-    answerArray[i] = "_";
-    }
-    document.querySelector('#word').innerText = answerArray.join(" ");
-	}	
+        losses = losses + 1;
+        guessesLeft = 8;
+        lastGuess = lettersGuessed.length;
+        lettersGuessed.splice(0,lastGuess);
+        lastLetter = answerArray.length;
+        answerArray.splice(0,lastLetter);
+        document.querySelector('#guessesLeft').innerText = guessesLeft;
+        document.querySelector('#losses').innerText = losses;
+        document.querySelector('#lettersGuessed').innerText = lettersGuessed;
+        randWord = Math.floor(Math.random()*words.length);
+        randWord = words[randWord];
+        for (var i = 0; i < randWord.length; i++) {
+        answerArray[i] = "_";
+        }
+        document.querySelector('#word').innerText = answerArray.join(" ");
+        }	
     }
 
     // end game conditions using user input

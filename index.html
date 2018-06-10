@@ -74,8 +74,8 @@
 
     for (var j = 0; j < randWord.length; j++) {
     if (randWord[j] == userLet) {
-    answerArray[j] = randWord[j];
-    document.querySelector('#word').innerText = answerArray.join(" ");
+        answerArray[j] = randWord[j];
+        document.querySelector('#word').innerText = answerArray.join(" ");
     }
     }
 
@@ -88,11 +88,17 @@
 	guessesLeft = 10;
 	lastGuess = lettersGuessed.length;
     lettersGuessed.splice(0,lastGuess);
+    lastLetter = answerArray.length;
+    answerArray.splice(0,lastLetter);
 	document.querySelector('#guessesLeft').innerText = guessesLeft;
 	document.querySelector('#losses').innerText = losses;
 	document.querySelector('#lettersGuessed').innerText = lettersGuessed;
 	randWord = Math.floor(Math.random()*words.length);
 	randWord = words[randWord];
+    for (var i = 0; i < randWord.length; i++) {
+    answerArray[i] = "_";
+    }
+    document.querySelector('#word').innerText = answerArray.join(" ");
 	}	
     }
 

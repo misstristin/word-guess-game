@@ -29,7 +29,7 @@
 
     // beginning values of variables
 
-	var guessesLeft = 10;
+	var guessesLeft = 8;
 	var wins = 0;
 	var losses = 0;
 
@@ -78,14 +78,31 @@
     }
 
         // if all the letters are guessed, add 1 to wins, reset game
+    if (answerArray.indexOf("_") == -1){
+        wins = wins + 1;
+        guessesLeft = 8;
+        lastGuess = lettersGuessed.length;
+        lettersGuessed.splice(0,lastGuess);
+        lastLetter = answerArray.length;
+        answerArray.splice(0,lastGuess);
+        document.querySelector('#guessesLeft').innerText = guessesLeft;
+        document.querySelector('#wins').innerText = wins;
+        document.querySelector('#lettersGuessed').innerText = lettersGuessed;
+        // randWord = Math.floor(Math.random()*words.length);
+	    // randWord = words[randWord];
+        // for (var i = 0; i < randWord.length; i++) {
+        // answerArray[i] = "_";
+        // }
+        // document.querySelector('#word').innerText = answerArray.join(" ");
+	    // }
+        }
 
-    
 
         // if all guesses are used, add 1 to losses, reset game
 
 	if(guessesLeft == 0){
 	losses = losses + 1;
-	guessesLeft = 10;
+	guessesLeft = 8;
 	lastGuess = lettersGuessed.length;
     lettersGuessed.splice(0,lastGuess);
     lastLetter = answerArray.length;

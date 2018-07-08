@@ -57,6 +57,7 @@
       // if all the letters are guessed, add 1 to wins, reset game
       
   if (answerArray.indexOf("_") == -1){
+    alert('You win!! The answer was ' + randWord + '.')
       wins = wins + 1;
       guessesLeft = 10;
       lastGuess = lettersGuessed.length;
@@ -77,6 +78,7 @@
       // if all guesses are used, add 1 to losses, reset game
 
   if(guessesLeft == 0){
+      alert('You lose... the answer was ' + randWord + '.')
       losses = losses + 1;
       guessesLeft = 10;
       lastGuess = lettersGuessed.length;

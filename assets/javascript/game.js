@@ -1,6 +1,13 @@
   // words, letters, answer arrays
 
-  var words = ['ron', 'harry', 'hermione', 'lumos', 'polyjuice', 'voldemort', 'hogsmeade', 'hogwarts', 'buckbeak', 'hagrid', 'gryffindor', 'slytherin', 'ravenclaw', 'hufflepuff', 'quidditch', 'firebolt', 'dumbledore', 'butterbeer'];
+  var words = ['ron', 'harry', 'hermione', 'lumos', 'polyjuice', 'voldemort', 'hogsmeade', 'hogwarts', 
+    'buckbeak', 'hagrid', 'gryffindor', 'slytherin', 'ravenclaw', 'hufflepuff', 'quidditch', 'firebolt', 
+    'dumbledore', 'butterbeer', 'phoenix', 'severus', 'snape', 'potter', 'unicorn', 'dragon', 'expelliarmus', 'stupify',
+    'triwizard', 'beauxbatons', 'durmstrang', 'weasley', 'fluffy', 'azkaban', 'muggle', 'wizard', 'draco', 'malfoy', 
+    'firewhisky', 'snitch', 'quaffle', 'bludger', 'gillyweed', 'unforgivable', 'sectumsempra', 'mcgonagall', 'professor', 
+    'headmaster', 'divination', 'prophecy', 'longbottom', 'dementors', 'patronus', 'basilisk', 'centaur', 'umbridge', 'peeves',
+    'werewolf', 'alohomora', 'lockhart', 'headmaster', 'pensieve', 'occlumency', 'legilimency', 'mudblood', 'crookshanks', 
+    'hedwig', 'scabbers'];
   var answerArray = [];
   var lettersGuessed = [];
 

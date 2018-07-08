@@ -7,7 +7,7 @@
     'firewhisky', 'snitch', 'quaffle', 'bludger', 'gillyweed', 'unforgivable', 'sectumsempra', 'mcgonagall', 'professor', 
     'headmaster', 'divination', 'prophecy', 'longbottom', 'dementors', 'patronus', 'basilisk', 'centaur', 'umbridge', 'peeves',
     'werewolf', 'alohomora', 'lockhart', 'headmaster', 'pensieve', 'occlumency', 'legilimency', 'mudblood', 'crookshanks', 
-    'hedwig', 'scabbers'];
+    'hedwig', 'scabbers', 'parseltongue', 'transfiguration', 'portkey', 'divination', 'mandrake', 'lockhart', 'horcrux'];
   var answerArray = [];
   var lettersGuessed = [];
 
